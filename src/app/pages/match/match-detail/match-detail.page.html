@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar *ngIf="(currentMatch$) | async as currentMatch">
+    <ion-title>Liga: {{currentMatch.league}}, Szezon: {{currentMatch.season}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-button *ngIf="!started" (click)="startMatch()">
+    Meccs indítása
+  </ion-button>
+  <div >
+    <div  *ngIf="!currentMatch.finished">
+      <ion-grid  >
+        <ion-row>
+          <ion-col>Hazai</ion-col>
+          <ion-col></ion-col>
+          <ion-col>Vendgég</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>{{teamHome.name}}</ion-col>
+          <ion-col>{{this.minutes}}:{{this.seconds}}</ion-col>
+          <ion-col>{{teamAway.name}}</ion-col>
+        </ion-row>
+        <!--Goal-->
+        <ion-row>
+          <ion-col>
+            <ion-button *ngIf="started" (click)="addGoal('home')">
+              {{currentMatch.goalsHome}}
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-progress-bar [value]="q"></ion-progress-bar>
+          </ion-col>
+          <ion-col >
+            <ion-button *ngIf="started" (click)="addGoal('away')">
+              {{currentMatch.goalsAway}}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <!--Possession-->
+        <ion-row>
+          <ion-col>
+            <ion-button *ngIf="started" (click)="teamWithBall('home')">
+              {{currentMatch.possessionHome}}
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-progress-bar [value]="p"></ion-progress-bar>
+          </ion-col>
+          <ion-col>
+            <ion-button *ngIf="started" (click)="teamWithBall('away')">
+              {{currentMatch.possessionAway}}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-button (click)="endOfTheMatch()">Meccs véglegesítése</ion-button>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div  *ngIf="currentMatch.finished">
+      <ion-grid  >
+        <ion-row>
+          <ion-col>Hazai</ion-col>
+          <ion-col></ion-col>
+          <ion-col>Vendgég</ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>{{teamHome.name}}</ion-col>
+          <ion-col>Meccs vége!</ion-col>
+          <ion-col>{{teamAway.name}}</ion-col>
+        </ion-row>
+        <!--Goal-->
+        <ion-row>
+          <ion-col>
+            <ion-button disabled="true" *ngIf="started" (click)="addGoal('home')">
+              {{currentMatch.goalsHome}}
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-progress-bar [value]="q"></ion-progress-bar>
+          </ion-col>
+          <ion-col >
+            <ion-button disabled="true"  *ngIf="started" (click)="addGoal('away')">
+              {{currentMatch.goalsAway}}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <!--Possession-->
+        <ion-row>
+          <ion-col >
+            <ion-button disabled="true" *ngIf="started" (click)="teamWithBall('home')">
+              {{currentMatch.possessionHome}}
+            </ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-progress-bar [value]="p"></ion-progress-bar>
+          </ion-col>
+          <ion-col >
+            <ion-button disabled="true"  *ngIf="started" (click)="teamWithBall('away')">
+              {{currentMatch.possessionAway}}
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-button  disabled="true"  (click)="endOfTheMatch()">Meccs véglegesítése</ion-button>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+</ion-content>

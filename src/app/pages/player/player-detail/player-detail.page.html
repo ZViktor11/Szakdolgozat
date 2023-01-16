@@ -1,0 +1,17 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>player-detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngIf="(currentPlayer$) | async as currentPlayer">
+    <ion-list>
+
+        <ion-row>Név: {{currentPlayer.name}}</ion-row>
+        <ion-row [routerLink]="['/team',playerTeamId]">Klub: {{currentPlayer.club}}</ion-row>
+        <ion-row>Kor: {{currentPlayer.age}}</ion-row>
+        <ion-row>TeamId: {{playerTeamId}}</ion-row>
+    </ion-list>
+  </ion-item>
+</ion-content>

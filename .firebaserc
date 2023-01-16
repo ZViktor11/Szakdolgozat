@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "szakdolgozat-aa34d": {
+      "hosting": {
+        "app": [
+          "szakdolgozat-aa34d"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "szakdolgozat-aa34d"
+  }
+}

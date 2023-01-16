@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>player</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-searchbar show-clear-button="focus" placeholder="Search" (ionChange)="handleChange($event)"></ion-searchbar>
+  <ion-list>
+
+    <ion-item *ngFor="let result of results" [routerLink]="['/player', result.id]">
+      <ion-label>
+        {{result.id}}
+      </ion-label>
+      <ion-label>
+        {{result.name}}
+      </ion-label>
+      <ion-label>
+        {{result.club}}
+      </ion-label>
+      <ion-label>
+        {{result.age}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+
+ <!--  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addTeam()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+
+</ion-content>

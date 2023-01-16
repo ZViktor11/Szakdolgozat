@@ -1,0 +1,12 @@
+<ion-toolbar>
+  <ion-buttons>
+    <ion-button color="primary" slot="start" [routerLink]="['/home']">
+      <ion-icon name="home-outline"></ion-icon>
+    </ion-button>
+    <ion-button color="primary" slot="start" [routerLink]="['/team']">Csapatok</ion-button>
+    <ion-button color="primary" slot="start" [routerLink]="['/player']">Játékosok</ion-button>
+    <ion-button color="primary" slot="start" [routerLink]="['/match']">Meccsek</ion-button>
+    <ion-button color="primary" slot="start" *ngIf="isLoggedOut$ | async" [routerLink]="['/login']">Bejelentkezés</ion-button>
+    <ion-button color="primary" *ngIf="isLoggedIn$ | async" (click)="logOut()" slot="start" [routerLink]="['/login']">Kijelentkezés</ion-button>
+  </ion-buttons>
+</ion-toolbar>

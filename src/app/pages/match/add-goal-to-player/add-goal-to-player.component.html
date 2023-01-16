@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Gólszerző</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item>
+     <ion-select *ngIf="players$ | async as players" placeholder="Select" [(ngModel)]="selectedPlayer">
+      <ion-select-option expand="block" *ngFor="let player of players" [value]="player">{{player.name + ' ' + player.id}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-button expand="block" color="success" (click)="submitGoal()">
+    <ion-icon name="add" slot="start"></ion-icon>
+    Gól hozzáadása
+  </ion-button>
+</ion-content>

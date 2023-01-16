@@ -1,0 +1,27 @@
+<ion-content>
+  <ion-item>
+    <ion-select *ngIf="(teams$) | async as teams" placeholder="Select" [(ngModel)]="selectedHomeId">
+      <ion-select-option *ngFor="let team of teams" [value]="team.id">{{team.name + ' ' + team.id}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-select *ngIf="(teams$) | async as teams" placeholder="Select" [(ngModel)]="selectedAwayId">
+      <ion-select-option *ngFor="let team of teams" [value]="team.id">{{team.id + ' ' + team.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+<ion-item>
+  <ion-select placeholder="Select" [(ngModel)]="selectedLeague">
+    <ion-select-option *ngFor="let item of leagues" [value]="item">{{item}}</ion-select-option>
+  </ion-select>
+</ion-item>
+<ion-item>
+  <ion-select placeholder="Select" [(ngModel)]="selectedSeason">
+    <ion-select-option *ngFor="let item of seasons" [value]="item">{{item}}</ion-select-option>
+  </ion-select>
+</ion-item>
+<ion-button expand="block" color="success" (click)="addMatch()">
+  <ion-icon name="add" slot="start"></ion-icon>
+  Meccs létrehozása
+</ion-button>
+
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header *ngIf="(currentTeam$) | async as currentTeam">
+  <ion-toolbar>
+    <ion-title>{{currentTeam.name}}</ion-title>
+    <p>{{currentTeam.address}}</p>
+  </ion-toolbar>
+</ion-header>
+<ion-content >
+  <ion-list *ngIf="(players$) | async as players">
+    <ion-list-header>
+      <ion-label>Név</ion-label>
+      <ion-label>Kor</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let player of players" [routerLink]="['/player',player.id]"  >
+      <ion-label>
+        {{player.name}}
+      </ion-label>
+      <ion-label>
+        {{player.age}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addPlayer()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

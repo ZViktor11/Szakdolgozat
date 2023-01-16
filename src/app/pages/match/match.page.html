@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>match</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-button (click)="createMatch()" >Meccs létrehozása</ion-button>
+  <ion-list *ngIf="matches$ | async as matches">
+    <ion-list-header>
+      <ion-label>Hazai</ion-label>
+      <ion-label>Vendég</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let match of matches" [routerLink]="['/match',match.id]" >
+      <ion-label>
+        {{match.teamHomeId}}
+      </ion-label>
+      <ion-label>
+        {{match.teamAwayId}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

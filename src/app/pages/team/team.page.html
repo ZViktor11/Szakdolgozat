@@ -1,0 +1,30 @@
+
+<ion-header>
+  <ion-title>Csapat</ion-title>
+</ion-header>
+<ion-content>
+
+  <ion-list *ngIf="teams$ | async as teams">
+    <ion-list-header>
+      <ion-label>Név</ion-label>
+      <ion-label>Kor</ion-label>
+    </ion-list-header>
+    <ion-item *ngFor="let team of teams" [routerLink]="['/team',team.id]">
+      <ion-label>
+        {{team.name}}
+      </ion-label>
+      <ion-label>
+        {{team.address}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addTeam()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+
